@@ -1,0 +1,167 @@
+@mixin overlay($color) {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $color;
+}
+@mixin active($color, $fill: false) {
+  @if ($fill == true) {
+    background-color: $primary-color;
+    border-color: $primary-color;
+  }
+  color: $color;
+  border-bottom: 1px solid $primary-color;
+}
+@mixin overlay-container($left: true, $full: false, $center: false) {
+  position: absolute;
+  top: 50%;
+  width: 50%;
+  @if ($full == true) {
+    width: 100%;
+    justify-content: center;
+    left: 0;
+  } @else if($center) {
+    justify-content: space-between;
+    left: 25%;
+    @include transform(translateX(-25%));
+  } @else if ($left) {
+    left: 0;
+    justify-content: flex-end;
+  } @else {
+    right: 0;
+    justify-content: flex-start;
+  }
+
+  @include transform(translateY(-50%));
+  padding: 50px;
+  color: white;
+  background-color: $overlay-color;
+  display: flex;
+  .overlay-container__headline {
+    font-size: 32px;
+    font-weight: normal;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    @include responsive(mobile) {
+      font-size: 20px;
+    }
+  }
+  .overlay-container__content {
+    font-size: 14px;
+    line-height: 2;
+  }
+  .content {
+    max-width: 500px;
+    @include responsive(mobile) {
+      width: 100%;
+    }
+  }
+  @include responsive(mobile) {
+    width: 100%;
+    height: fit-content;
+  }
+}
+@mixin circle($diameter, $color, $back-color: white, $fill: false) {
+  background-color: if($fill, $back-color, transparent);
+  width: $diameter;
+  height: $diameter;
+  border: 1px solid $back-color;
+  border-radius: $diameter;
+  -webkit-border-radius: $diameter;
+  -moz-border-radius: $diameter;
+  -ms-border-radius: $diameter;
+  -o-border-radius: $diameter;
+}
+@mixin image-with-overlay($link, $opacity:0.6) {
+  background-color: #1f2021;
+  background-image: url($link);
+  background-size: cover;
+  &::before {
+    content: "";
+    @include overlay(rgba(0, 0, 0, $opacity));
+  }
+}
+
+@mixin responsive($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (max-width: 767px) {
+      @content;
+    }
+  } @else if $breakpoint == small {
+    @media (min-width: 767px) and (max-width: 991px) {
+      @content;
+    }
+  } @else if $breakpoint == medium {
+    @media (min-width: 992px) and(max-width: 1199px) {
+      @content;
+    }
+  } @else if $breakpoint == large {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  }
+}
+@mixin transition($period) {
+  transition: $period;
+  -webkit-transition: $period;
+  -moz-transition: $period;
+  -ms-transition: $period;
+  -o-transition: $period;
+}
+@mixin transform($transforms) {
+  transform: $transforms;
+  -webkit-transform: $transforms;
+  -moz-transform: $transforms;
+  -ms-transform: $transforms;
+  -o-transform: $transforms;
+}
+@mixin three-dots($radius, $border-color: white, $position: true) {
+  @if ($position) {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    @include transform(translateX(-50%));
+  }
+  display: flex;
+  align-items: center;
+  li {
+    display: block;
+    @include circle($radius, $border-color, $border-color);
+    margin-right: 10px;
+    &.active {
+      @include active($primary-color, true);
+    }
+  }
+}
+
+@mixin skill-level($percentage) {
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: percentage($number: $percentage/100);
+    height: 100%;
+    background-color: $primary-color;
+  }
+}
+@mixin skill-percentage($percentage) {
+  width: 40px;
+  padding: 2px 5px;
+  color: white;
+  border-radius: 5px;
+  background-color: black;
+  position: absolute;
+  top: -5px;
+  left: calc(#{$percentage}/ 100 * 100% - 20px);
+  transform: translateX(-50%);
+  &::before {
+    content: "";
+    position: absolute;
+    border: 8px solid transparent;
+    border-top-color: black;
+    top: 25px;
+    left: 16px;
+  }
+}

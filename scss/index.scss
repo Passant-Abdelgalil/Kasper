@@ -1,0 +1,824 @@
+@import "helpers/mixins";
+@import "helpers/global-rules";
+
+// header styling : START
+header {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+  nav {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    .toggle-menu {
+      color: white;
+      font-size: 22px;
+      display: none;
+      // show in mobile view port
+      @include responsive(mobile) {
+        display: block;
+      }
+      &:hover + ul {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        a {
+          padding: 15px;
+        }
+      }
+    }
+    ul {
+      display: flex;
+      // hide in mobile view port
+      @include responsive(mobile) {
+        display: none;
+      }
+      li {
+        a {
+          display: block;
+          color: white;
+          text-decoration: none;
+          font-size: 14px;
+          padding: 40px 10px;
+          position: relative;
+          z-index: 2;
+          @include transition(0.3s);
+          &:hover {
+            @include active($primary-color);
+          }
+        }
+      }
+    }
+
+    .form {
+      width: 40px;
+      height: 30px;
+      position: relative;
+      margin-left: 30px;
+      border-left: 1px solid white;
+      i {
+        position: absolute;
+        color: white;
+        font-size: 20px;
+        top: 50%;
+        right: 0;
+        @include transform(translateY(-50%));
+      }
+    }
+  }
+  .container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 97px;
+    // bottom border in the design
+    &::before {
+      content: "";
+      position: absolute;
+      width: calc(100% - 30px);
+      bottom: 0;
+      border-bottom: 1px solid grey;
+    }
+    // logo style
+    img {
+      height: 40px;
+    }
+  }
+}
+.active {
+  @include active($primary-color);
+}
+
+// header styling : END
+
+// Start landing
+.landing {
+  position: relative;
+  min-height: 100vh;
+  @include image-with-overlay(
+    "https://elzerowebschool.github.io/HTML_And_CSS_Template_Two/images/landing.jpg"
+  );
+  .side-container {
+    @include overlay-container;
+  }
+
+  .change-background {
+    position: absolute;
+    color: #ddd;
+    top: 50%;
+    @include transform(translateY(-50%));
+    @include responsive(mobile) {
+      display: none;
+    }
+  }
+  .fa-angle-left {
+    left: 30px;
+  }
+  .fa-angle-right {
+    right: 30px;
+  }
+  .dots {
+    @include three-dots(20px);
+  }
+}
+// end landing
+
+// Start services
+.services {
+  padding: $section-padding 0;
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+    .services__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+      grid-template-rows: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 60px 40px;
+      @include responsive(mobile) {
+        display: block;
+      }
+      .service {
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        @include responsive(mobile) {
+          flex-direction: column;
+          text-align: center;
+        }
+        .service__title {
+          margin-bottom: 30px;
+          color: $primary-color;
+          font-size: 20px;
+        }
+        .service__icon {
+          margin-right: 40px;
+          @include responsive(mobile) {
+            margin: 0 0 30px;
+          }
+        }
+        .service__description {
+          color: $paragraph-color;
+          line-height: 2;
+        }
+      }
+    }
+  }
+  .featuers {
+    padding: $section-padding 0;
+    height: 600px;
+    position: relative;
+    @include image-with-overlay(
+      "https://elzerowebschool.github.io/HTML_And_CSS_Template_Two/images/design-features.jpg"
+    );
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    .image,
+    .side-container {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+    }
+    .image {
+      img {
+        position: relative;
+        bottom: -150px;
+        @include responsive(mobile) {
+          display: none;
+        }
+        @include responsive(small) {
+          margin-left: 20px;
+        }
+        @include responsive(medium) {
+          margin-left: 50px;
+        }
+        @include responsive(large) {
+          margin-left: 200px;
+        }
+      }
+    }
+    .side-container {
+      @include overlay-container(false);
+      ul li {
+        padding: 15px 0;
+        &::before {
+          font-family: "Font Awesome 5 Free";
+          content: "\f108";
+          font-weight: 900;
+          margin-right: 20px;
+          position: relative;
+          top: 1px;
+        }
+      }
+    }
+  }
+}
+// end services
+
+// start portfolio
+.portfolio {
+  padding: $section-padding 0;
+  .filters {
+    display: flex;
+    margin-bottom: 40px;
+    justify-content: center;
+    li {
+      padding: 8px 10px;
+      &.active {
+        @include active(white, true);
+      }
+    }
+  }
+  .project-flex {
+    display: flex;
+    flex-wrap: wrap;
+    .project {
+      flex: 1 25%;
+      @include responsive(mobile) {
+        flex: 100%;
+      }
+      @include responsive(small) {
+        flex: 1 50%;
+      }
+      position: relative;
+      overflow: hidden;
+      &:hover {
+        .project__description {
+          bottom: 0;
+        }
+        img {
+          @include transform(rotate(3deg) scale(1.1));
+        }
+      }
+      img {
+        max-width: 100%;
+        @include transition(0.3s);
+      }
+      .project__description {
+        position: absolute;
+        left: 0;
+        padding: 20px;
+        background-color: white;
+        width: 100%;
+        bottom: -100%;
+        z-index: 2;
+        @include transition(0.3s);
+        .project__title {
+          font-weight: normal;
+          margin-bottom: 10px;
+        }
+        .project__link {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}
+// end portfolio
+
+.video {
+  position: relative;
+  &::before {
+    content: "";
+    @include overlay(rgba(0, 0, 0, 0.4));
+  }
+  video {
+    width: 100%;
+    height: 100%;
+  }
+  .video__description {
+    @include overlay-container(false, true);
+    text-align: center;
+    .content p {
+      font-size: 17px;
+    }
+    .see-more {
+      font-size: 15px;
+      display: block;
+      width: fit-content;
+      margin: 20px auto 0;
+      text-decoration: none;
+      text-transform: uppercase;
+      background-color: black;
+      color: white;
+      padding: 10px 20px;
+    }
+  }
+}
+// end portfolio
+
+// start about us
+.about {
+  position: relative;
+  text-align: center;
+  padding: $section-padding 0 0;
+  .container {
+    overflow: hidden;
+
+    img {
+      margin-bottom: -120px;
+      @include responsive(mobile) {
+        width: 80%;
+        margin-bottom: -15%;
+      }
+      @include responsive(small) {
+        width: 80%;
+        margin-bottom: -100px;
+      }
+    }
+  }
+}
+.stats {
+  position: relative;
+  padding: $section-padding 0;
+  @include image-with-overlay(
+    "https://elzerowebschool.github.io/HTML_And_CSS_Template_Two/images/stats.png"
+  );
+  .container {
+    position: relative;
+    color: white;
+    margin: auto;
+    background-color: $overlay-color;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .stat {
+      position: relative;
+      text-align: center;
+      padding: 50px;
+      .stat__icon {
+        @include circle(40px, white, black, true);
+        font-size: 15px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+      .stat__value {
+        font-size: 50px;
+        margin-bottom: 10px;
+        font-weight: 900;
+      }
+      .stat__desc {
+        font-size: 14px;
+      }
+      @include responsive(mobile) {
+        flex-basis: 100%;
+        padding: 40px 0;
+      }
+      @include responsive(small) {
+        flex-basis: 50%;
+      }
+      @include responsive(medium) {
+        flex-basis: 25%;
+      }
+    }
+  }
+}
+.reviews {
+  padding: $section-padding 0;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    @include responsive(small) {
+      flex-direction: column;
+    }
+    @include responsive(mobile) {
+      flex-direction: column;
+    }
+  }
+  .headline {
+    font-size: 20px;
+    font-weight: normal;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .intro {
+    color: $paragraph-color;
+    line-height: 1.8;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .testimonials {
+    position: relative;
+    flex-basis: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .testimonial {
+      display: flex;
+      padding-bottom: 30px;
+      .photo {
+        @include circle(90px, transparent, transparent, false);
+        margin-right: 40px;
+      }
+      .text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        text-align: left;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #ccc;
+        p {
+          &:first-child {
+            color: black;
+          }
+          &:last-child {
+            color: $paragraph-color;
+            font-size: 14px;
+          }
+        }
+
+        @include responsive(mobile) {
+          line-height: 1.8;
+        }
+        @include responsive(medium) {
+          line-height: 1.8;
+        }
+      }
+      @include responsive(mobile) {
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        .photo {
+          margin-right: 0;
+          @include circle(100px, transparent, transparent, false);
+        }
+        .text {
+          margin: 10px;
+          text-align: center;
+          p {
+            line-height: 1.8;
+          }
+        }
+      }
+    }
+    .dots {
+      @include three-dots(15px, #aaa, false);
+      margin: 20px 0;
+    }
+    @include responsive(mobile) {
+      margin-bottom: 40px;
+    }
+    @include responsive(small) {
+      margin-bottom: 40px;
+    }
+  }
+  .skills {
+    flex-basis: 47%;
+    .skill {
+      padding: 20px;
+      padding-top: 0;
+      position: relative;
+      .skill__name {
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+      .skill__level {
+        height: 30px;
+        background-color: #ddd;
+        width: 100%;
+        position: relative;
+        &.adobe,
+        &.php {
+          @include skill-level(90);
+          + .skill__level-percentage {
+            position: relative;
+            @include skill-percentage(90);
+          }
+        }
+
+        &.html-css {
+          @include skill-level(85);
+          + .skill__level-percentage {
+            position: relative;
+            @include skill-percentage(85);
+          }
+        }
+        &.js {
+          @include skill-level(80);
+          + .skill__level-percentage {
+            position: relative;
+            @include skill-percentage(80);
+          }
+        }
+      }
+    }
+  }
+}
+.ad {
+  padding: $section-padding 0;
+  position: relative;
+  @include image-with-overlay(
+    "https://elzerowebschool.github.io/HTML_And_CSS_Template_Two/images/quote.jpg",
+    0.4
+  );
+  text-align: center;
+  color: white;
+  .quote {
+    font-size: 30px;
+    margin-bottom: 15px;
+  }
+}
+.pricing {
+  padding: $section-padding 0;
+  .prices {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    .card {
+      background-color: #fcfcfc;
+      flex-basis: 23%;
+      @include responsive(mobile) {
+        flex-basis: 100%;
+        margin-bottom: 20px;
+      }
+      @include responsive(small) {
+        flex-basis: 45%;
+        margin-bottom: 20px;
+      }
+      @include responsive(medium) {
+        flex-basis: 30%;
+        margin-bottom: 20px;
+      }
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-top: 1px solid $primary-color;
+      text-align: center;
+      .card__price {
+        padding: 40px 0 20px;
+        width: 100%;
+        border-bottom: 1px solid $primary-color;
+        .price__type {
+          text-transform: uppercase;
+          font-size: 20px;
+          margin-bottom: 10px;
+        }
+        .price__value {
+          position: relative;
+          font-size: 60px;
+          font-weight: 900;
+          &::before {
+            content: "$";
+            position: absolute;
+            font-size: 30px;
+            font-weight: normal;
+            left: calc(50% - 60px);
+          }
+          &::after {
+            content: "/Mo";
+            position: absolute;
+            font-size: 20px;
+            bottom: 10px;
+            right: calc(50% - 90px);
+          }
+        }
+      }
+      .card__features {
+        width: 100%;
+        border-bottom: 1px solid $primary-color;
+        p {
+          padding: 20px;
+          position: relative;
+          &:not(:last-child)::before {
+            content: "";
+            width: 55%;
+            position: absolute;
+            border-bottom: 1px solid $primary-color;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            -webkit-transform: translateX(-50%);
+            -moz-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            -o-transform: translateX(-50%);
+          }
+        }
+      }
+      .card--buy-button {
+        color: purple;
+        display: block;
+        margin: 30px 0;
+        padding: 20px;
+        border: 1px solid $primary-color;
+      }
+    }
+  }
+  .request-plan {
+    .content {
+      font-size: 20px;
+      text-align: center;
+    }
+    .btn {
+      text-transform: none;
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+  }
+}
+
+.subscribe {
+  position: relative;
+  padding: $section-padding 0;
+  @include image-with-overlay(
+    "https://elzerowebschool.github.io/HTML_And_CSS_Template_Two/images/subscribe.jpg"
+  );
+
+  .container {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include responsive(small) {
+      flex-direction: column;
+    }
+    @include responsive(mobile) {
+      flex-direction: column;
+    }
+    .content {
+      flex-basis: 51%;
+      @include responsive(small) {
+        margin-top: 40px;
+      }
+      @include responsive(mobile) {
+        margin-top: 40px;
+      }
+    }
+    .subscribe-form {
+      position: relative;
+      $form-padding: 25px;
+      $font: 17px;
+      flex-basis: 45%;
+      border: 1px solid white;
+      padding: $form-padding;
+      display: flex;
+      justify-content: space-between;
+      width: 500px;
+      max-width: 100%;
+
+      .form__icon {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+      }
+      .email {
+        background-color: transparent;
+        color: white;
+        border: none;
+        font-size: $font;
+        width: calc(63% + 20px);
+        margin-left: 35px;
+        &:focus {
+          outline: none;
+        }
+      }
+      .btn {
+        border: none;
+        font-size: $font;
+        font-weight: 100;
+        display: inline-block;
+        margin: -$form-padding;
+      }
+    }
+  }
+}
+
+.contact-us {
+  padding: $section-padding 0;
+  .content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: left;
+    @include responsive(mobile) {
+      flex-direction: column-reverse;
+      .contact__details {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      .contact__form {
+        width: 100%;
+      }
+    }
+    .contact__form {
+      position: relative;
+      display: flex;
+      flex-basis: 70%;
+      flex-direction: column;
+      input:not(.btn),
+      textarea {
+        width: 100%;
+        display: block;
+        border: 1px solid #ccc;
+        font-size: 17px;
+        font-weight: 100;
+        padding: 20px;
+        margin-bottom: 30px;
+        &:focus {
+          outline: none;
+        }
+      }
+      .message {
+        height: 200px;
+        resize: none;
+      }
+      .btn {
+        border: none;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        font-size: 17px;
+        font-weight: 100;
+        position: absolute;
+        bottom: -80px;
+        right: 0;
+      }
+    }
+    .contact__details {
+      .title {
+        font-size: 18px;
+        text-transform: uppercase;
+        font-weight: 500;
+        margin-bottom: 30px;
+      }
+      .phones {
+        margin-bottom: 60px;
+        .phone-number {
+          position: relative;
+          margin-bottom: 5px;
+          color: $paragraph-color;
+          span {
+            display: inline-block;
+            padding-right: 5px;
+          }
+        }
+      }
+      .address {
+        :nth-child(n + 2) {
+          font-style: italic;
+          color: $paragraph-color;
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+}
+footer {
+  position: relative;
+  color: white;
+  padding: 50px 0;
+  @include image-with-overlay(
+    "https://elzerowebschool.github.io/HTML_And_CSS_Template_Two/images/subscribe.jpg"
+  );
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    .logo {
+      display: block;
+      margin-bottom: 30px;
+    }
+    .social {
+      width: fit-content;
+      .content {
+        text-align: center;
+        font-size: 23px;
+        font-weight: 100;
+        padding: 20px;
+        text-transform: uppercase;
+        letter-spacing: 1.2;
+        border-bottom: 1px solid white;
+      }
+      .icons {
+        padding: 20px;
+        display: flex;
+        justify-content: space-around;
+      }
+      margin-bottom: 40px;
+    }
+    .copyright {
+      span {
+        color: $primary-color;
+      }
+    }
+  }
+}
