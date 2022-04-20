@@ -49,6 +49,7 @@ ul {
 }
 
 .main-heading {
+  width: 100%;
   text-align: center;
 }
 
@@ -647,6 +648,14 @@ header .container img {
 
 @media (max-width: 767px) {
   .portfolio .project-flex .project {
+    -webkit-box-flex: 100%;
+        -ms-flex: 100%;
+            flex: 100%;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 991px) {
+  .portfolio .project-flex .project {
     -webkit-box-flex: 1;
         -ms-flex: 1 50%;
             flex: 1 50%;
@@ -805,8 +814,22 @@ header .container img {
   overflow: hidden;
 }
 
-.about img {
+.about .container img {
   margin-bottom: -120px;
+}
+
+@media (max-width: 767px) {
+  .about .container img {
+    width: 80%;
+    margin-bottom: -15%;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 991px) {
+  .about .container img {
+    width: 80%;
+    margin-bottom: -100px;
+  }
 }
 
 .stats {
@@ -966,15 +989,6 @@ header .container img {
           align-items: center;
 }
 
-@media (min-width: 767px) and (max-width: 991px) {
-  .reviews .testimonials {
-    margin-bottom: 40px;
-  }
-  .reviews .testimonials .testimonial .text p {
-    line-height: 1.8;
-  }
-}
-
 .reviews .testimonials .testimonial {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1032,6 +1046,40 @@ header .container img {
   }
 }
 
+@media (max-width: 767px) {
+  .reviews .testimonials .testimonial {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .reviews .testimonials .testimonial .photo {
+    margin-right: 0;
+    background-color: transparent;
+    width: 100px;
+    height: 100px;
+    border: 1px solid transparent;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -ms-border-radius: 100px;
+    -o-border-radius: 100px;
+  }
+  .reviews .testimonials .testimonial .text {
+    margin: 10px;
+    text-align: center;
+  }
+  .reviews .testimonials .testimonial .text p {
+    line-height: 1.8;
+  }
+}
+
 .reviews .testimonials .dots {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1061,6 +1109,18 @@ header .container img {
   border-color: #19c8fa;
   color: #19c8fa;
   border-bottom: 1px solid #19c8fa;
+}
+
+@media (max-width: 767px) {
+  .reviews .testimonials {
+    margin-bottom: 40px;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 991px) {
+  .reviews .testimonials {
+    margin-bottom: 40px;
+  }
 }
 
 .reviews .skills {
@@ -1245,6 +1305,7 @@ header .container img {
   .pricing .prices .card {
     -ms-flex-preferred-size: 100%;
         flex-basis: 100%;
+    margin-bottom: 20px;
   }
 }
 

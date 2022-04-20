@@ -560,7 +560,7 @@ header {
       align-items: center;
       border-top: 1px solid $primary-color;
       text-align: center;
-      .card__price {
+      &__price {
         padding: 40px 0 20px;
         width: 100%;
         border-bottom: 1px solid $primary-color;
@@ -589,7 +589,7 @@ header {
           }
         }
       }
-      .card__features {
+      &__features {
         width: 100%;
         border-bottom: 1px solid $primary-color;
         p {
@@ -610,7 +610,7 @@ header {
           }
         }
       }
-      .card--buy-button {
+      &--buy-button {
         color: purple;
         display: block;
         margin: 30px 0;
@@ -660,9 +660,10 @@ header {
       }
     }
     .subscribe-form {
-      position: relative;
       $form-padding: 25px;
       $font: 17px;
+      
+      position: relative;
       flex-basis: 45%;
       border: 1px solid white;
       padding: $form-padding;
