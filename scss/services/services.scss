@@ -1,0 +1,93 @@
+@import "../helpers/mixins";
+@import "../helpers/global-rules";
+.services {
+    padding: $section-padding 0;
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 40px;
+      .services__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+        grid-template-rows: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 60px 40px;
+        @include responsive(mobile) {
+          display: block;
+        }
+        .service {
+          padding: 20px;
+          display: flex;
+          justify-content: space-between;
+          @include responsive(mobile) {
+            flex-direction: column;
+            text-align: center;
+          }
+          .service__title {
+            margin-bottom: 30px;
+            color: $primary-color;
+            font-size: 20px;
+          }
+          .service__icon {
+            margin-right: 40px;
+            @include responsive(mobile) {
+              margin: 0 0 30px;
+            }
+          }
+          .service__description {
+            color: $paragraph-color;
+            line-height: 2;
+          }
+        }
+      }
+    }
+    .featuers {
+      padding: $section-padding 0;
+      height: 600px;
+      position: relative;
+      @include image-with-overlay(
+        "https://elzerowebschool.github.io/HTML_And_CSS_Template_Two/images/design-features.jpg"
+      );
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      .image,
+      .side-container {
+        position: relative;
+        z-index: 2;
+        flex: 1;
+      }
+      .image {
+        img {
+          position: relative;
+          bottom: -150px;
+          @include responsive(mobile) {
+            display: none;
+          }
+          @include responsive(small) {
+            margin-left: 20px;
+          }
+          @include responsive(medium) {
+            margin-left: 50px;
+          }
+          @include responsive(large) {
+            margin-left: 200px;
+          }
+        }
+      }
+      .side-container {
+        @include overlay-container(false);
+        ul li {
+          padding: 15px 0;
+          &::before {
+            font-family: "Font Awesome 5 Free";
+            content: "\f108";
+            font-weight: 900;
+            margin-right: 20px;
+            position: relative;
+            top: 1px;
+          }
+        }
+      }
+    }
+  }

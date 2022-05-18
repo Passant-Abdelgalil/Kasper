@@ -1,0 +1,199 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  margin: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+}
+
+@media (max-width: 767px) {
+  .container {
+    width: 100%;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 991px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+.main-heading {
+  width: 100%;
+  text-align: center;
+}
+
+.main-heading h2 {
+  font-weight: normal;
+  font-size: 40px;
+  position: relative;
+  margin-bottom: 70px;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+}
+
+.main-heading h2::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 120px;
+  border: 1px solid black;
+  bottom: -30px;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+}
+
+.main-heading h2::after {
+  content: "";
+  background-color: transparent;
+  width: 14px;
+  height: 14px;
+  border: 1px solid true;
+  border-radius: 14px;
+  -webkit-border-radius: 14px;
+  -moz-border-radius: 14px;
+  -ms-border-radius: 14px;
+  -o-border-radius: 14px;
+  position: absolute;
+  bottom: -37.5px;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+}
+
+.main-heading p {
+  width: 550px;
+  max-width: 100%;
+  line-height: 1.8;
+  margin: 0 auto 100px;
+  color: #777;
+}
+
+.btn {
+  display: block;
+  position: relative;
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  width: fit-content;
+  padding: 15px 20px;
+  margin: 30px auto 0;
+  background-color: #19c8fa;
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+input[type="submit"] {
+  cursor: pointer;
+}
+
+footer {
+  position: relative;
+  color: white;
+  padding: 50px 0;
+  background-color: #1f2021;
+  background-image: url("https://elzerowebschool.github.io/HTML_And_CSS_Template_Two/images/subscribe.jpg");
+  background-size: cover;
+}
+
+footer::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+footer .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+footer .container .logo {
+  display: block;
+  margin-bottom: 30px;
+}
+
+footer .container .social {
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  width: fit-content;
+  margin-bottom: 40px;
+}
+
+footer .container .social .content {
+  text-align: center;
+  font-size: 23px;
+  font-weight: 100;
+  padding: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1.2;
+  border-bottom: 1px solid white;
+}
+
+footer .container .social .icons {
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+footer .container .social .icons a {
+  cursor: pointer;
+}
+
+footer .container .copyright span {
+  color: #19c8fa;
+}
+/*# sourceMappingURL=footer.css.map */

@@ -1,0 +1,83 @@
+@import "../helpers/mixins";
+@import "../helpers/global-rules";
+
+.contact-us {
+    padding: $section-padding 0;
+    .content {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      text-align: left;
+      @include responsive(mobile) {
+        flex-direction: column-reverse;
+        .contact__details {
+          text-align: center;
+          margin-bottom: 40px;
+        }
+        .contact__form {
+          width: 100%;
+        }
+      }
+      .contact__form {
+        position: relative;
+        display: flex;
+        flex-basis: 70%;
+        flex-direction: column;
+        input:not(.btn),
+        textarea {
+          width: 100%;
+          display: block;
+          border: 1px solid #ccc;
+          font-size: 17px;
+          font-weight: 100;
+          padding: 20px;
+          margin-bottom: 30px;
+          &:focus {
+            outline: none;
+          }
+        }
+        .message {
+          height: 200px;
+          resize: none;
+        }
+        .btn {
+          border: none;
+          padding-top: 20px;
+          padding-bottom: 20px;
+          font-size: 17px;
+          font-weight: 100;
+          position: absolute;
+          bottom: -80px;
+          right: 0;
+        }
+      }
+      .contact__details {
+        .title {
+          font-size: 18px;
+          text-transform: uppercase;
+          font-weight: 500;
+          margin-bottom: 30px;
+        }
+        .phones {
+          margin-bottom: 60px;
+          .phone-number {
+            position: relative;
+            margin-bottom: 5px;
+            color: $paragraph-color;
+            span {
+              display: inline-block;
+              padding-right: 5px;
+            }
+          }
+        }
+        .address {
+          :nth-child(n + 2) {
+            font-style: italic;
+            color: $paragraph-color;
+            margin-bottom: 5px;
+          }
+        }
+      }
+    }
+  }
+  

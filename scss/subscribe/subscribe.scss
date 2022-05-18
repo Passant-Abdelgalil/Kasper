@@ -1,0 +1,74 @@
+@import "../helpers/mixins";
+@import "../helpers/global-rules";
+
+.subscribe {
+    position: relative;
+    padding: $section-padding 0;
+    @include image-with-overlay(
+      "https://elzerowebschool.github.io/HTML_And_CSS_Template_Two/images/subscribe.jpg"
+    );
+  
+    .container {
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      @include responsive(small) {
+        flex-direction: column;
+      }
+      @include responsive(mobile) {
+        flex-direction: column;
+      }
+      .content {
+        flex-basis: 51%;
+        @include responsive(small) {
+          margin-top: 40px;
+        }
+        @include responsive(mobile) {
+          margin-top: 40px;
+        }
+      }
+      .subscribe-form {
+        $form-padding: 25px;
+        $font: 17px;
+        
+        position: relative;
+        flex-basis: 45%;
+        border: 1px solid white;
+        padding: $form-padding;
+        display: flex;
+        justify-content: space-between;
+        width: 500px;
+        max-width: 100%;
+  
+        .form__icon {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          -webkit-transform: translateY(-50%);
+          -moz-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+          -o-transform: translateY(-50%);
+        }
+        .email {
+          background-color: transparent;
+          color: white;
+          border: none;
+          font-size: $font;
+          width: calc(63% + 20px);
+          margin-left: 35px;
+          &:focus {
+            outline: none;
+          }
+        }
+        .btn {
+          border: none;
+          font-size: $font;
+          font-weight: 100;
+          display: inline-block;
+          margin: -$form-padding;
+        }
+      }
+    }
+  }
+  

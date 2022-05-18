@@ -83,6 +83,7 @@ ul {
 .btn {
   display: block;
   position: relative;
+  width: -moz-fit-content;
   width: fit-content;
   padding: 15px 20px;
   margin: 30px auto 0;
@@ -90,4 +91,7 @@ ul {
   color: white;
   text-transform: uppercase;
   text-decoration: none;
+}
+input[type="submit"] {
+  cursor: pointer;
 }

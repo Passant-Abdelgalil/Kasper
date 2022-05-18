@@ -1,0 +1,49 @@
+@import "helpers/mixins";
+@import "helpers/global-rules";
+
+footer {
+  position: relative;
+  color: white;
+  padding: 50px 0;
+  @include image-with-overlay(
+    "https://elzerowebschool.github.io/HTML_And_CSS_Template_Two/images/subscribe.jpg"
+  );
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    .logo {
+      display: block;
+      margin-bottom: 30px;
+    }
+    .social {
+      width: -moz-fit-content;
+      width: fit-content;
+      margin-bottom: 40px;
+
+      .content {
+        text-align: center;
+        font-size: 23px;
+        font-weight: 100;
+        padding: 20px;
+        text-transform: uppercase;
+        letter-spacing: 1.2;
+        border-bottom: 1px solid white;
+      }
+      .icons {
+        padding: 20px;
+        display: flex;
+        justify-content: space-around;
+        a {
+          cursor: pointer;
+        }
+      }
+    }
+    .copyright {
+      span {
+        color: $primary-color;
+      }
+    }
+  }
+}

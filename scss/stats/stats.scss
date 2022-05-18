@@ -1,0 +1,53 @@
+@import "../helpers/mixins";
+@import "../helpers/global-rules";
+
+.stats {
+    position: relative;
+    padding: $section-padding 0;
+    @include image-with-overlay(
+      "https://elzerowebschool.github.io/HTML_And_CSS_Template_Two/images/stats.png"
+    );
+    .container {
+      position: relative;
+      color: white;
+      margin: auto;
+      background-color: $overlay-color;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+  
+      .stat {
+        position: relative;
+        text-align: center;
+        padding: 50px;
+        .stat__icon {
+          @include circle(40px, white, black, true);
+          font-size: 15px;
+          margin: auto;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 20px;
+        }
+        .stat__value {
+          font-size: 50px;
+          margin-bottom: 10px;
+          font-weight: 900;
+        }
+        .stat__desc {
+          font-size: 14px;
+        }
+        @include responsive(mobile) {
+          flex-basis: 100%;
+          padding: 40px 0;
+        }
+        @include responsive(small) {
+          flex-basis: 50%;
+        }
+        @include responsive(medium) {
+          flex-basis: 25%;
+        }
+      }
+    }
+  }
+  

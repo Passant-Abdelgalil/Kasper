@@ -1,0 +1,62 @@
+@import "../helpers/mixins";
+@import "../helpers/global-rules";
+
+.portfolio {
+  padding: $section-padding 0;
+  .filters {
+    display: flex;
+    margin-bottom: 40px;
+    justify-content: center;
+    li {
+      padding: 8px 10px;
+      cursor: pointer;
+      &.active {
+        @include active(white, true);
+      }
+    }
+  }
+  .project-flex {
+    display: flex;
+    flex-wrap: wrap;
+    .project {
+      flex: 1 25%;
+      @include responsive(mobile) {
+        flex: 100%;
+      }
+      @include responsive(small) {
+        flex: 1 50%;
+      }
+      position: relative;
+      overflow: hidden;
+      &:hover {
+        .project__description {
+          bottom: 0;
+        }
+        img {
+          @include transform(rotate(3deg) scale(1.1));
+        }
+      }
+      img {
+        max-width: 100%;
+        @include transition(0.3s);
+      }
+      .project__description {
+        position: absolute;
+        left: 0;
+        padding: 20px;
+        background-color: white;
+        width: 100%;
+        bottom: -100%;
+        z-index: 2;
+        @include transition(0.3s);
+        .project__title {
+          font-weight: normal;
+          margin-bottom: 10px;
+        }
+        .project__link {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}

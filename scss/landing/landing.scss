@@ -1,0 +1,32 @@
+@import "../helpers/mixins";
+@import "../helpers/global-rules";
+
+.landing {
+    position: relative;
+    min-height: 100vh;
+    @include image-with-overlay(
+      "https://elzerowebschool.github.io/HTML_And_CSS_Template_Two/images/landing.jpg"
+    );
+    .side-container {
+      @include overlay-container;
+    }
+  
+    .change-background {
+      position: absolute;
+      color: #ddd;
+      top: 50%;
+      @include transform(translateY(-50%));
+      @include responsive(mobile) {
+        display: none;
+      }
+    }
+    .fa-angle-left {
+      left: 30px;
+    }
+    .fa-angle-right {
+      right: 30px;
+    }
+    .dots {
+      @include three-dots(20px);
+    }
+  }

@@ -1,0 +1,103 @@
+@import "../helpers/mixins";
+@import "../helpers/global-rules";
+
+.pricing {
+  padding: $section-padding 0;
+  .prices {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    .card {
+      background-color: #fcfcfc;
+      flex-basis: 23%;
+      @include responsive(mobile) {
+        flex-basis: 100%;
+        margin-bottom: 20px;
+      }
+      @include responsive(small) {
+        flex-basis: 45%;
+        margin-bottom: 20px;
+      }
+      @include responsive(medium) {
+        flex-basis: 30%;
+        margin-bottom: 20px;
+      }
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-top: 1px solid $primary-color;
+      text-align: center;
+      &__price {
+        padding: 40px 0 20px;
+        width: 100%;
+        border-bottom: 1px solid $primary-color;
+        .price__type {
+          text-transform: uppercase;
+          font-size: 20px;
+          margin-bottom: 10px;
+        }
+        .price__value {
+          position: relative;
+          font-size: 60px;
+          font-weight: 900;
+          &::before {
+            content: "$";
+            position: absolute;
+            font-size: 30px;
+            font-weight: normal;
+            left: calc(50% - 60px);
+          }
+          &::after {
+            content: "/Mo";
+            position: absolute;
+            font-size: 20px;
+            bottom: 10px;
+            right: calc(50% - 90px);
+          }
+        }
+      }
+      &__features {
+        width: 100%;
+        border-bottom: 1px solid $primary-color;
+        p {
+          padding: 20px;
+          position: relative;
+          &:not(:last-child)::before {
+            content: "";
+            width: 55%;
+            position: absolute;
+            border-bottom: 1px solid $primary-color;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            -webkit-transform: translateX(-50%);
+            -moz-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            -o-transform: translateX(-50%);
+          }
+        }
+      }
+      &--buy-button {
+        color: purple;
+        display: block;
+        cursor: pointer;
+        margin: 30px 0;
+        padding: 20px;
+        border: 1px solid $primary-color;
+      }
+    }
+  }
+  .request-plan {
+    .content {
+      font-size: 20px;
+      text-align: center;
+    }
+    .btn {
+      text-transform: none;
+      padding-left: 30px;
+      padding-right: 30px;
+      cursor: pointer;
+    }
+  }
+}
